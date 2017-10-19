@@ -1,6 +1,6 @@
 //обертка to do листа
 var divToDo = document.createElement("div");
-document.body.appendChild(divToDo);
+
 divToDo.className = "to-do-list";
 
 //блок создания новой задачи
@@ -84,6 +84,9 @@ var list = document.createElement("ul");
 list.className = "list";
 list.id = "tasksList";
 divTasks.appendChild(list);
+
+//добавляем виджет на страницу
+document.body.appendChild(divToDo);
 
 //фильтры
 selectTasks.addEventListener("change", selectTask);
