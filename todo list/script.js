@@ -159,7 +159,7 @@ function selectDeadlines() {
 }
 
 //добавление новой задачи
-var idcounter = 1;
+var idcounter = makeCounter();
 
 function newItem() {
   var inputValue = document.querySelector(".new-task__name").value;
@@ -183,10 +183,8 @@ function newItem() {
     spanDeadline.className = "deadline deadline--padding";
     spanDate.className = "deadline";
     li.className = "list__item";
-    checkbox.id = "checkbox" + idcounter;
-    idcounter++;
-    spanClose.id = "span" + idcounter;
-    idcounter++;
+    checkbox.id = "checkbox" + idcounter();
+    spanClose.id = "span" + idcounter();
 
     spanClose.addEventListener("click", deleteItem);
     checkbox.addEventListener("click", completeTask);
@@ -218,6 +216,14 @@ function convertDateForCompare(date) {
 function deleteItem() {
   document.getElementById(event.target.id).parentNode.parentNode.removeChild(document.getElementById(event.target.id).parentNode);
 }
+
+//счетчик формирования уникального id
+function makeCounter() {
+  var currentCount = 1;
+  return function() {
+    return currentCount++;
+  };
+ }
 
 //флаг выполнено/не выполнено
 function completeTask() {
